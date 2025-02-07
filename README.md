@@ -15,7 +15,7 @@ psql -h localhost -p 5432 -U postgres -d postgres
 go run ./cmd/delivery/main.go
 ```
 
-#### delivery service should be run in mulitple instances by putting delivery services behind a nginx proxy you can distribute worker process over multiple instances
+#### delivery service should be run in mulitple instances by putting delivery services behind a nginx proxy you can distribute worker processes over multiple instances
 
 ### Also run 3pl dumb service too
 ```
