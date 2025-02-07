@@ -95,7 +95,10 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		app.StartServer()
+		if err := app.StartServer(); err != nil {
+			logger.Error("HTTP server failed", slog.Any("error", err))
+			ctxCancel()
+		}
 	}()
 
 	wg.Add(1)

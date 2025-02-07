@@ -57,11 +57,13 @@ func New(
 	}
 }
 
-func (a *app) StartServer() {
+func (a *app) StartServer() error {
 	a.logger.Info("Starting server", slog.String("addr", a.server.Addr))
 	if err := a.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		a.logger.Error("Failed to listen and serve", slog.String("addr", a.server.Addr), slog.Any("error", err))
+		return err
 	}
+	return nil
 }
 
 func (a *app) ShutdownServer(ctx context.Context) {
